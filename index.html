@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b25">
+  <title>Astro Leap: Cosmic Jumper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell" aria-label="Astro Leap game">
+    <canvas id="game" aria-label="Astro Leap gameplay canvas"></canvas>
+
+    <header class="hud" id="hud" hidden>
+      <div class="hud-top">
+        <div class="stat"><span class="label">ALTITUDE</span><strong id="altitude">0 m</strong></div>
+        <div class="stat stars-stat"><span class="star-icon">✦</span><strong id="stars">0</strong></div>
+        <div class="hud-actions">
+          <button class="icon-btn" id="soundBtn" aria-label="Toggle sound">♫</button>
+          <button class="icon-btn" id="pauseBtn" aria-label="Pause game">Ⅱ</button>
+        </div>
+      </div>
+      <div class="power-list" id="powerList"></div>
+    </header>
+
+    <div class="touch-controls" id="touchControls" hidden>
+      <button class="touch-btn" id="leftBtn" aria-label="Move left">‹</button>
+      <button class="touch-btn" id="rightBtn" aria-label="Move right">›</button>
+    </div>
+
+    <section class="screen menu-screen" id="startScreen">
+      <div class="eyebrow">A TINY LEAP FOR AN ASTRONAUT</div>
+      <div class="logo-mark">✦</div>
+      <h1>ASTRO <span>LEAP</span></h1>
+      <p class="subtitle">COSMIC JUMPER</p>
+      <div class="menu-card">
+        <div class="menu-row"><span>PERSONAL BEST</span><strong id="menuBest">0 m</strong></div>
+        <div class="menu-row"><span>STARS COLLECTED</span><strong id="menuStars">0 ✦</strong></div>
+        <div class="divider"></div>
+        <span class="select-label">CHOOSE YOUR SUIT</span>
+        <div class="suit-options" id="suitOptions">
+          <button class="suit-choice selected" data-suit="cyan" aria-label="Cosmic Cyan"><i class="swatch cyan"></i><span>CYAN</span></button>
+          <button class="suit-choice" data-suit="pink" aria-label="Nebula Pink"><i class="swatch pink"></i><span>PINK</span></button>
+          <button class="suit-choice" data-suit="lime" aria-label="Alien Lime"><i class="swatch lime"></i><span>LIME</span></button>
+          <button class="suit-choice" data-suit="gold" aria-label="Solar Gold"><i class="swatch gold"></i><span>GOLD</span></button>
+        </div>
+        <button class="primary-btn" id="launchBtn">LAUNCH MISSION <span>↗</span></button>
+        <p class="controls-hint">← → / A D TO MOVE &nbsp; • &nbsp; TOUCH & DRAG ON MOBILE</p>
+      </div>
+      <div class="footer-note">EXPLORE THE INFINITE. ONE BOUNCE AT A TIME.</div>
+    </section>
+
+    <section class="screen overlay-screen" id="pauseScreen" hidden>
+      <div class="panel">
+        <div class="eyebrow">MISSION ON HOLD</div>
+        <h2>PAUSED</h2>
+        <p>Your next leap is waiting.</p>
+        <button class="primary-btn" id="resumeBtn">RESUME <span>▶</span></button>
+        <button class="secondary-btn" id="restartBtn">RESTART RUN</button>
+      </div>
+    </section>
+
+    <section class="screen overlay-screen" id="gameOverScreen" hidden>
+      <div class="panel gameover-panel">
+        <div class="eyebrow">MISSION COMPLETE</div>
+        <h2 id="gameOverTitle">NICE FLIGHT!</h2>
+        <div class="final-score"><strong id="finalScore">0</strong><span>METERS</span></div>
+        <div class="record-badge" id="recordBadge" hidden>✦ NEW PERSONAL BEST ✦</div>
+        <div class="run-stats">
+          <div><span>STARS THIS RUN</span><strong id="runStars">0</strong></div>
+          <div><span>PLATFORMS</span><strong id="runPlatforms">0</strong></div>
+          <div><span>BEST HEIGHT</span><strong id="runBest">0 m</strong></div>
+        </div>
+        <button class="primary-btn" id="replayBtn">FLY AGAIN <span>↗</span></button>
+        <button class="secondary-btn" id="homeBtn">MAIN MENU</button>
+      </div>
+    </section>
+    <div class="toast" id="toast" aria-live="polite"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
